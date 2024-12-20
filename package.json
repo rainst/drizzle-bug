@@ -1,0 +1,18 @@
+{
+  "name": "drizzle-bug",
+  "version": "1.0.0",
+  "description": "Repo for reproducing and testing an issue I have encountered when trying to pull an SQLite database",
+  "scripts": {
+    "pull": "drizzle-kit pull --config=config/config.js",
+    "pull:old": "drizzle-kit introspect:sqlite --config=config/config_old.js",
+    "downgrade": "yarn add drizzle-orm@~0.27.0 drizzle-kit@~0.19.0",
+    "latest": "yarn add drizzle-orm drizzle-kit"
+  },
+  "author": "brein",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "drizzle-kit": "^0.30.1",
+    "drizzle-orm": "^0.38.2"
+  }
+}
