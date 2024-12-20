@@ -1,11 +1,12 @@
 # ISSUE WITH INTROSPECTING SQLITE DATABASE
 
-I picked up this project after about a year and realised that with the most recent versions of drizzle orm and kit it fails pulling (introspecting) the sqlite database.
+After a little more than a year of inactivity I started working again on a personal project and realised that with the most recent versions of drizzle orm and kit it fails pulling (introspecting) the sqlite database.
+To help solve the issue I have created this repository.
 
-If I run `pull` (`introspect`) using `drizzle-orm@~0.27.0` and `drizzle-kit@~0.19.0` it works without issues.
+`drizzle-orm@~0.34.0` and `drizzle-kit@~0.25.0` are the most recent versions that still work fine on my database, when I run `orm-kit pull`.
 
+If I update the packages to the next available minor versions `drizzle-orm@~0.35.0` and `drizzle-kit@~0.26.0` or the latest currently available I end up with this error:
 
-This is the error I get with the latest versions:
 ```
 Pulling from ['public'] list of schemas
 
@@ -27,14 +28,17 @@ SqliteError: no such column: "%3.3f" - should this be a string literal in single
 ```
 
 ## SCRIPTS FOR REPRODUCING AND TESTING
-Run `yarn pull` to reproduce the error.
 
-Run `yarn downgrade` to install older versions of drizzle orm and kit and then `yarn pull:old`, the database will be introspected without errors.
+- Run `yarn pull` to reproduce the error. ❌
 
-Run `yarn latest` to go back and install the latest versions of drizzle orm and kit.
+- Run `yarn downgrade` to install an older versions of the packages and then `yarn pull`, the database will be introspected without errors. ✅
+
+- Run `yarn downgrade:old` to install an older version of the packages that still use the old config based on driver rather than dialect and run `yarn pull:old` to introspect successfully. ✅
+
+- Run `yarn check-latest` to install the latest versions of drizzle orm and kit and run a pull to see if the bug has been fixed in the latest version available. 🔍
 
 ## WHAT I AM TRYING TO DO
 
-The database contains raw data extracted from Microsoft Flight Simulator 2020 (airports, navigation data and so on..), that I use to run this website: https://msfs.breincorporation.com/. 
+The database contains raw data extracted from Microsoft Flight Simulator 2020 (airports, navigation data and so on..), that I use to run this website: https://msfs.breincorporation.com/.
 
 Currently I manually extract the Airport table and shave off the colums I don't need, I was trying to automate this step with the help of drizzle.

@@ -5,8 +5,13 @@
   "scripts": {
     "pull": "drizzle-kit pull --config=config/config.js",
     "pull:old": "drizzle-kit introspect:sqlite --config=config/config_old.js",
-    "downgrade": "yarn add drizzle-orm@~0.27.0 drizzle-kit@~0.19.0",
-    "latest": "yarn add drizzle-orm drizzle-kit"
+    "downgrade": "yarn add drizzle-orm@~0.34.0 drizzle-kit@~0.25.0",
+    "downgrade:old": "yarn add drizzle-orm@~0.30.0 drizzle-kit@~0.20.0",
+    "check-latest": "yarn add drizzle-orm drizzle-kit && yarn pull"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rainst/drizzle-bug.git"
   },
   "author": "brein",
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
